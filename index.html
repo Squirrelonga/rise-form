@@ -1,48 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camp Okta Fetch FRQ</title>
 </head>
 <body>
+    <form id="questionForm">
+        <p id="question">Placeholder</p>
+        <input type="text">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
     <script>
-        // Function to get URL parameter by name
-        function getUrlParameter(name) {
-            name = name.replace(/[\[\]]/g, "\\$&");
-            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(window.location.href);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+          // Extract the "questionId" parameter from the URL
+          const urlParams = new URLSearchParams(window.location.search);
+          const questionId = urlParams.get('questionId');
 
-        function fetchDataFromGoogleScriptAPI(questionIdParam) {
-          if (questionIdParam) {
-              // Replace "question" in the URL with the parameter value
-              let apiUrl = `https://script.google.com/a/macros/okta.com/s/AKfycbxc6pf9UkNJ9S0D2PFS9YtdaEz0q_-udQK5qSwLm1Y1zf9Kc2AaPzRZEMHd_E6Q6xpHHg/exec?sheetName=FRQ&questionId=${questionIdParam}`;
-
-              // Make a GET request to the Google Script URL
-              fetch(apiUrl)
-                  .then(function(response) {
-                      return response.text();
-                  })
-                  .then(function(html) {
-                      // Display the HTML response
-                      document.body.innerHTML = html;
-                  })
-                  .catch(function(error) {
-                      console.error('Error:', error);
-                  });
-          } else {
-              // Display a message if the "question" parameter is missing
-              document.body.innerHTML = "Please provide a 'questionId' parameter in the URL.";
+          if (questionId) {
+            question = fetchQuestion(questionId);
+            document.getElementById('question').value = question;
           }
-        }
+        });
 
-        // Get the "question" parameter from the URL
-        let questionIdParam = getUrlParameter("questionId");
-        fetchDataFromGoogleScriptAPI(questionIdParam);
+        document.getElementById('questionForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+
+        function fetchQuestion(questionId) {
+            const apiUrl = `https://script.google.com/macros/s/1vbdZKoLJSDaMMstoGTrN0lKbPSj6hbaiGtJqhj1M7OI/exec?sheetName=FRQ&questionId=${questionId}`;
+
+            fetch(apiUrl)
+                .then(function (response) {
+                    return response.text();
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    document.getElementById('result').textContent = 'An error occurred while fetching the field name.';
+                });
+        }
     </script>
 </body>
 </html>
