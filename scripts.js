@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   questionId = getQuestionId();
-  fetchQuestion("pd1");
+  fetchQuestion(questionId);
 });
 
 document.getElementById('questionForm').addEventListener('submit', function (e) {
