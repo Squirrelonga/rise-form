@@ -1,44 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <form id="questionForm">
-        <p id="question">Placeholder</p>
-        <input type="text">
+        <p id="question"></p>
+        <textarea id="largeTextArea" name="text" rows="6" cols="40"></textarea>
+        <br>
         <button type="submit">Submit</button>
+        <br>
+        <br>
+        <div id="suggestedAnswerContainer">
+            <p id="suggestedAnswerTitle">Suggested Answer</p>
+            <p id="suggestedAnswer"></p>
+        </div>
     </form>
-
-    <div id="result"></div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          // Extract the "questionId" parameter from the URL
-          const urlParams = new URLSearchParams(window.location.search);
-          const questionId = urlParams.get('questionId');
-
-          if (questionId) {
-            question = fetchQuestion(questionId);
-            document.getElementById('question').value = question;
-          }
-        });
-
-        document.getElementById('questionForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
-
-        function fetchQuestion(questionId) {
-            const apiUrl = `https://script.google.com/macros/s/AKfycbxx7toYDsdgQ1RQBdZP6spHfKq-PRIX5J7vaSEwxot5ECeO9VTnDcN133jO7YU7Wco_2g/exec?sheetName=FRQ&questionId=${questionId}`;
-
-            fetch(apiUrl)
-                .then(function (response) {
-                    return response.text();
-                })
-                .catch(function (error) {
-                    console.error('Error:', error);
-                    document.getElementById('result').textContent = 'An error occurred while fetching the field name.';
-                });
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
