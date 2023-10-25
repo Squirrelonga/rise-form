@@ -4,9 +4,10 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <form id="questionForm">
+    <form id="questionForm" action="https://script.google.com/macros/s/your-script-id/exec" method="POST">
         <p id="question"></p>
-        <textarea id="largeTextArea" name="text" rows="6" cols="40"></textarea>
+        <textarea id="largeTextArea" name="text" rows="6" cols="40" id="answer" name="answer"></textarea>
+        <input type="hidden" id="qid" name="qid" value="">
         <br>
         <button type="submit">Submit</button>
         <br>
