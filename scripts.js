@@ -18,7 +18,7 @@ function getQuestionId() {
 }
 
 function fetchQuestion(questionId) {
-  const apiUrl = `https://script.google.com/macros/s/AKfycbzvrIKJoEB-dKEoyP3EDuuZdsmcznwKTjpcWiNKgpjRL-L4fG45wY_0S1TioXpSPbi53Q/exec?sheetName=FRQ&questionId=${questionId}`;
+  const apiUrl = `https://script.google.com/macros/s/AKfycbwypmj-ijFsQcd9to-R0gxX9CaOJjJLYOwDM3m9eUOK7fws2u9pTFh5YGBdT2lwyg7cmg/exec?sheetName=FRQ&questionId=${questionId}`;
 
   fetch(apiUrl)
       .then(function (response) {
