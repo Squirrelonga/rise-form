@@ -20,12 +20,12 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
       };
 
       // Make a POST request to your Google Apps Script endpoint
-      fetch('https://script.google.com/macros/s/AKfycbyzUiGNWGOS-27N9DgKz1cBbCyVSK81Ae25sXN8N7OmpS-RxBwxtt4BbkUls5mDhujCMQ/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbw6oz6asfu-ELjj-rK3eu8wCtdQI3Tna1jSrppaqFzDWesP0nXk8iSVH0RWJmIgo03Z9Q/exec', {
           method: 'POST',
           headers: {
               'Content-Type': 'text/plain'
           },
-          body: data
+          body: JSON.stringify(data)
       })
           .then(function (response) {
               console.log(response)
