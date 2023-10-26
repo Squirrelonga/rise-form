@@ -25,7 +25,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
           },
-          body: JSON.stringify(data)
+          body: data
       })
           .then(function (response) {
               console.log(response)
