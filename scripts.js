@@ -8,6 +8,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
   e.preventDefault();
   revealAnswer();
 
+  console.log(`Here's the questionId from within the getElementById code: ${getQuestionId()}`)
   // Retrieve the form data
   const answer = document.getElementById('largeTextArea').value;
   const qid = document.getElementById('qid').value;
@@ -29,6 +30,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
           body: JSON.stringify(data)
       })
           .then(function (response) {
+              console.log(response)
               return response.text();
           })
           .then(function (responseText) {
