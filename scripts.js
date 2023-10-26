@@ -23,7 +23,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
       fetch('https://script.google.com/macros/s/AKfycbyzUiGNWGOS-27N9DgKz1cBbCyVSK81Ae25sXN8N7OmpS-RxBwxtt4BbkUls5mDhujCMQ/exec', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+              'Content-Type': 'text/plain'
           },
           body: data
       })
