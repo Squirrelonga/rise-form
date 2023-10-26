@@ -8,10 +8,9 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
   e.preventDefault();
   revealAnswer();
 
-  console.log(`Here's the questionId from within the getElementById code: ${getQuestionId()}`)
   // Retrieve the form data
   const answer = document.getElementById('largeTextArea').value;
-  const qid = document.getElementById('qid').value;
+  const qid = getQuestionId();
 
   if (qid && answer) {
       // Create a data object to send as JSON
@@ -25,7 +24,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
           method: 'POST',
           mode: 'no-cors',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/x-www-form-urlencoded'
           },
           body: JSON.stringify(data)
       })
