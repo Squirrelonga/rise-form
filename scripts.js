@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   questionId = getQuestionId();
-  fetchQuestion(questionId);
   addQidToForm(questionId);
+  fetchQuestion(questionId);
 });
 
 document.getElementById('questionForm').addEventListener('submit', function (e) {
@@ -22,6 +22,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
       // Make a POST request to your Google Apps Script endpoint
       fetch('https://script.google.com/macros/s/AKfycbyzUiGNWGOS-27N9DgKz1cBbCyVSK81Ae25sXN8N7OmpS-RxBwxtt4BbkUls5mDhujCMQ/exec', {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
               'Content-Type': 'application/json'
           },
