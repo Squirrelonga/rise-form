@@ -20,7 +20,7 @@ document.getElementById('questionForm').addEventListener('submit', function (e) 
       };
 
       // Make a POST request to your Google Apps Script endpoint
-      fetch('https://script.google.com/macros/s/AKfycbw6oz6asfu-ELjj-rK3eu8wCtdQI3Tna1jSrppaqFzDWesP0nXk8iSVH0RWJmIgo03Z9Q/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbyypCSdK_tRxkjtPeoNhYonCelIOUE6o1LNUnvCjFg_Kc7389TJhuoQBkCK_698I9RMyQ/exec', {
           method: 'POST',
           headers: {
               'Content-Type': 'text/plain'
@@ -54,7 +54,7 @@ function getQuestionId() {
 }
 
 function fetchQuestion(questionId) {
-  const apiUrl = `https://script.google.com/macros/s/AKfycbwypmj-ijFsQcd9to-R0gxX9CaOJjJLYOwDM3m9eUOK7fws2u9pTFh5YGBdT2lwyg7cmg/exec?sheetName=FRQ&questionId=${questionId}`;
+  const apiUrl = `https://script.google.com/macros/s/AKfycbyypCSdK_tRxkjtPeoNhYonCelIOUE6o1LNUnvCjFg_Kc7389TJhuoQBkCK_698I9RMyQ/exec?sheetName=FRQ&questionId=${questionId}`;
 
   fetch(apiUrl)
       .then(function (response) {
